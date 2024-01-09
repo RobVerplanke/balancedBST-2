@@ -1,0 +1,25 @@
+{
+  "name": "balancedbst-2",
+  "version": "1.0.0",
+  "description": "Create a BST with functionalities",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RobVerplanke/balancedBST-2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RobVerplanke/balancedBST-2/issues"
+  },
+  "homepage": "https://github.com/RobVerplanke/balancedBST-2#readme",
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.1"
+  }
+}
