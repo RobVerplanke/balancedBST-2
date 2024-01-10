@@ -4,7 +4,7 @@ const ammountOfNumbers = 20;
 function fillSet() {
   const numbersList = new Set();
 
-  for (let i = 0; i < ammountOfNumbers; i++) {
+  while (numbersList.size < ammountOfNumbers) {
     numbersList.add(Math.floor(Math.random() * 100));
   }
 
