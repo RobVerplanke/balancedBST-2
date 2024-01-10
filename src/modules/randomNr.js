@@ -1,10 +1,17 @@
-// Return an array of random numbers < 100
+const ammountOfNumbers = 20;
 
-const ammount = 20;
-const numbersList = [];
+// Fill a Set with unique random numbers < 100
+function fillSet() {
+  const numbersList = new Set();
 
-for (let i = 0; i < ammount; i++) {
-  numbersList.push(Math.floor(Math.random() * 100));
+  for (let i = 0; i < ammountOfNumbers; i++) {
+    numbersList.add(Math.floor(Math.random() * 100));
+  }
+
+  return numbersList;
 }
 
-export default { numbersList };
+// Get array with numbers
+export default function getNumbers() {
+  return Array.from(fillSet());
+}
