@@ -5,13 +5,13 @@ function buildTree(arr) {
   // Base case
   if (arr.length === 0) return null;
 
-  // Find mid point
+  // Find mid-point of the given array
   const mid = Math.floor(arr.length / 2);
 
   // Create a root node
   const root = createNode(arr[mid]);
 
-  // Create left and right half
+  // Split the array in half
   const leftHalf = arr.slice(0, mid);
   const rightHalf = arr.slice(mid + 1);
 

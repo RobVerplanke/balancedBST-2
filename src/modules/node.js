@@ -6,7 +6,7 @@ class Node {
   }
 }
 
-// Returns new node
+// Return new node
 export default function createNode(data, left, right) {
   return new Node(data, left, right);
 }

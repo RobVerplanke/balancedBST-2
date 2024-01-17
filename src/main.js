@@ -2,11 +2,11 @@ import getNumbers from './modules/data-generator/generate-numbers.js';
 import Tree from './modules/bst.js';
 import prettyPrint from './prettyPrint.js';
 
-// Amount of random numbers
+// The desired amount of nodes in the tree
 const AMOUNT = 20;
 
-// Build a balanced Binary Search Tree with a sorted array of random numbers < 100
+// Convert a sorted array of random numbers (<100) to a balanced Binary Search Tree
 const bst = new Tree(getNumbers(AMOUNT));
 
-// Visualize tree
+// Visualize the tree
 prettyPrint(bst.root);
