@@ -13,10 +13,7 @@
         "indent": ["error", 2],
         "no-plusplus": "off",
         "padded-blocks": ["off"],
-        "quotes": [
-            "error",
-            "single"
-        ],
-        "import/extensions": "always"
+        "quotes": ["error", "single"],
+        "import/extensions": ["error", "always"]
     }
 }
