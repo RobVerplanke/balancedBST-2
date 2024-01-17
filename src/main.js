@@ -1,4 +1,4 @@
-import getNumbers from './modules/randomNr.js';
+import getNumbers from './modules/data-generator/randomNr.js';
 import Tree from './modules/bst.js';
 
 // Amount of random numbers
