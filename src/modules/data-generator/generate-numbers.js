@@ -1,4 +1,4 @@
-import mergeSort from './mergeSort.js';
+import mergeSort from './merge-sort.js';
 
 // Create a set with unique random numbers < 100
 export default function getNumbers(ammount) {

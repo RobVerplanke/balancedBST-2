@@ -1,4 +1,4 @@
-import getNumbers from './modules/data-generator/randomNr.js';
+import getNumbers from './modules/data-generator/generate-numbers.js';
 import Tree from './modules/bst.js';
 import prettyPrint from './prettyPrint.js';
 
