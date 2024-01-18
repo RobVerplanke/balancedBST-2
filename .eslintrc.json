@@ -14,6 +14,7 @@
         "no-plusplus": "off",
         "padded-blocks": ["off"],
         "quotes": ["error", "single"],
-        "import/extensions": ["error", "always"]
+        "import/extensions": ["error", "always"],
+        "no-multiple-empty-lines": ["error", { "max": 2, "maxEOF": 1 }]
     }
 }
