@@ -1,3 +1,4 @@
+/* eslint-disable no-else-return */
 import createNode from './node.js';
 
 function buildTree(arr) {
@@ -11,13 +12,9 @@ function buildTree(arr) {
   // Create a root node
   const root = createNode(arr[mid]);
 
-  // Split the array in half
-  const leftHalf = arr.slice(0, mid);
-  const rightHalf = arr.slice(mid + 1);
-
   // Recursive call
-  root.left = buildTree(leftHalf);
-  root.right = buildTree(rightHalf);
+  root.left = buildTree(arr.slice(0, mid));
+  root.right = buildTree(arr.slice(mid + 1));
 
   return root;
 }
@@ -27,7 +24,66 @@ export default class Tree {
     this.root = buildTree(arr);
   }
 
-  printTree() {
-    return console.log(this.root);
+  getRoot() {
+    return this.root;
   }
+
+  // insert(value) {
+
+  // }
+
+  // delete(value) {
+
+  // }
+
+  // Write a find function that accepts a value and returns the node with the given value.
+  find(value, root = this.root) {
+
+    // Base Case: check if the value is present in the tree or if the root has the value.
+    if (root === null || value === root.data) {
+      return root;
+    }
+
+    // Recursive call
+    // Value is smaller than current root's data: iterate through left subtree
+    if (value < root.data) {
+      return this.find(value, root.left);
+    } else {
+    // Value is greater than current root's data: iterate through right subtree
+      return this.find(value, root.right);
+    }
+  }
+
+  // levelOrder() {
+
+  // }
+
+  // inOrder() {
+
+  // }
+
+  // preOrder() {
+
+  // }
+
+  // postOrder() {
+
+  // }
+
+  // height() {
+
+  // }
+
+  // depth() {
+
+  // }
+
+  // isBalanced() {
+
+  // }
+
+  // rebalance() {
+
+  // }
+
 }

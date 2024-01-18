@@ -10,3 +10,5 @@ const bst = new Tree(getNumbers(AMOUNT));
 
 // Visualize the tree
 prettyPrint(bst.root);
+
+console.log(bst.find(4));
