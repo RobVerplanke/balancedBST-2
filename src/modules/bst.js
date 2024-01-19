@@ -75,11 +75,14 @@ export function levelOrderIteration(root, callback) {
     // Get first item from queue
     const currentNode = queue.shift();
 
-    // Add its value to result list
-    result.push(currentNode.data);
+    // Execute callback function if there is one
+    if (callback !== undefined) {
+      callback(currentNode);
+    } else {
 
-    // Use callback
-    // code here
+      // Add its value to result list
+      result.push(currentNode.data);
+    }
 
     // Push left node to queue
     if (currentNode.left) queue.push(currentNode.left);
@@ -93,7 +96,7 @@ export function levelOrderIteration(root, callback) {
 }
 
 
-// Bfs using iteration
+// Bfs using recursion
 // export function levelOrderRecursion(root) {
 
 // }
