@@ -34,5 +34,5 @@ levelOrderIteration(bst.root, callback);
 console.log('\nCallback executed');
 
 // Without callback
-// console.log(`\nNo callback found, level order: ${levelOrderIteration(bst.root)}`);
+// console.log(`\nNo callback found. Level order: ${levelOrderIteration(bst.root)}`);
 

@@ -75,21 +75,18 @@ export function levelOrderIteration(root, callback) {
     // Get first item from queue
     const currentNode = queue.shift();
 
-    // Execute callback function if there is one
+    // Execute callback function, skip filling the result list
     if (callback !== undefined) {
       callback(currentNode);
     } else {
 
-      // Add its value to result list
+      // If no callback function is given, fill result list in level order
       result.push(currentNode.data);
     }
 
-    // Push left node to queue
+    // Push left and right node to queue
     if (currentNode.left) queue.push(currentNode.left);
-
-    // Push right node to queue
     if (currentNode.right) queue.push(currentNode.right);
-
   }
 
   return result;
