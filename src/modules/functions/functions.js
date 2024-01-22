@@ -1,7 +1,6 @@
-/* eslint-disable no-else-return */
-import createNode from './node.js';
+import createNode from '../classes/node.js';
 
-function buildTree(arr) {
+export function buildTree(arr) {
 
   // Base case
   if (arr.length === 0) return null;
@@ -19,11 +18,7 @@ function buildTree(arr) {
   return root;
 }
 
-export default class Tree {
-  constructor(arr) {
-    this.root = buildTree(arr);
-  }
-}
+
 // Write insert and delete functions that accepts a value to insert/delete.
 // You’ll have to deal with several cases for delete, such as when a node has children or not.
 
@@ -37,7 +32,6 @@ export default class Tree {
 
 
 // Write a find function that accepts a value and returns the node with the given value.
-
 export function find(value, root) {
 
   // Base Case: check if the value is present in the tree or if the root already has the value.
@@ -147,6 +141,3 @@ export function levelOrderIteration(root, callback) {
 // Tip: You’ll want to use a traversal method to provide a new array to the buildTree function.
 
 // rebalance() {
-
-// }
-

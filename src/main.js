@@ -1,6 +1,8 @@
-import getNumbers from './modules/data-generator/generate-numbers.js';
-import Tree, { find, levelOrderIteration } from './modules/bst.js';
-import prettyPrint from './prettyPrint.js';
+import getNumbers from './modules/data/generate-numbers.js';
+import Tree from './modules/classes/bst.js';
+import prettyPrint from './modules/pretty-print/prettyPrint.js';
+import { find, levelOrderIteration } from './modules/functions/functions.js';
+
 
 // Desired amount of nodes in the tree
 const amount = 15;
