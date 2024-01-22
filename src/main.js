@@ -1,7 +1,7 @@
-import getNumbers from './modules/data/generate-numbers.js';
-import Tree from './modules/classes/bst.js';
-import prettyPrint from './modules/pretty-print/prettyPrint.js';
 import { find, levelOrderIteration } from './modules/functions/functions.js';
+import { Tree } from './modules/tree/index.js';
+import getNumbers from './modules/data/generateNumbers.js';
+import prettyPrint from './modules/pretty-print/prettyPrint.js';
 
 
 // Desired amount of nodes in the tree

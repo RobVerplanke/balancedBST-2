@@ -1,24 +1,3 @@
-import createNode from '../classes/node.js';
-
-export function buildTree(arr) {
-
-  // Base case
-  if (arr.length === 0) return null;
-
-  // Find mid-point of the given array
-  const mid = Math.floor(arr.length / 2);
-
-  // Create a root node
-  const root = createNode(arr[mid]);
-
-  // Recursive call
-  root.left = buildTree(arr.slice(0, mid));
-  root.right = buildTree(arr.slice(mid + 1));
-
-  return root;
-}
-
-
 // Write insert and delete functions that accepts a value to insert/delete.
 // You’ll have to deal with several cases for delete, such as when a node has children or not.
 
