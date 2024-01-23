@@ -1,4 +1,4 @@
-import { createNode } from './index.js';
+import createNode from './node.js';
 
 function buildTree(arr) {
 

@@ -65,11 +65,48 @@ export function levelOrderIteration(root, callback) {
   return result;
 }
 
-
 // Bfs using recursion
-// export function levelOrderRecursion(root) {
+function levelOrderHelper(root, result, queue, callback) {
 
-// }
+  // Base case
+  if (root === null) return;
+
+  if (root.left) queue.push(root.left);
+  if (root.right) queue.push(root.right);
+
+  // Execute callback function, skip filling the result list
+  if (callback) {
+    callback(root);
+  } else {
+
+    // If no callback function is given, fill result list in level order
+    result.push(root.data);
+  }
+
+  if (queue.length) {
+    const currentNode = queue.shift();
+
+    // Recursive call for each node in queue
+    levelOrderHelper(currentNode, result, queue, callback);
+  }
+}
+
+export function levelOrderRecursion(root, callback) {
+  const result = [];
+  const queue = [];
+
+  if (root) {
+    if (callback) {
+      callback(root);
+    } else {
+      result.push(root.data);
+    }
+
+    levelOrderHelper(root, result, queue, callback);
+  }
+
+  return result;
+}
 
 
 // Write inOrder, preOrder, and postOrder functions that also accept a random optional
