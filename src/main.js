@@ -24,9 +24,9 @@ prettyPrint(bst.root);
 console.log(`\nSearching for node ${searchValue}...`);
 
 if (find(searchValue, bst.root) === null) {
-  console.log(`\nNode ${searchValue} not found!`);
+  console.log(`Node ${searchValue} not found!`);
 } else {
-  console.log(`\nFound node ${searchValue}: ${find(searchValue, bst.root)}`);
+  console.log(`Found node ${searchValue}: ${find(searchValue, bst.root)}`);
 }
 
 
@@ -36,7 +36,7 @@ if (find(searchValue, bst.root) === null) {
 console.log('\n\nLevelOrder with callback function, using ITERATION:');
 const callbackA = (node) => { console.log(`\ncallback for: ${node.data}`); };
 levelOrderIteration(bst.root, callbackA);
-console.log('\nCallback executed');
+console.log('\nCallbacks executed');
 
 
 // Using ITERATION and without a callback function
@@ -48,7 +48,7 @@ console.log(`\nNo callback found. Level order: ${levelOrderIteration(bst.root)}`
 console.log('\n\nLevelOrder with callback function, using RECURSION:');
 const callbackB = (node) => { console.log(`\ncallback for: ${node.data}`); };
 console.log(levelOrderRecursion(bst.root, callbackB));
-console.log('\nCallback executed');
+console.log('\nCallbacks executed');
 
 
 // Using RECURSION and without a callback function
