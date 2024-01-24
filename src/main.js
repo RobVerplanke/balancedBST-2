@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
 import {
-  find, levelOrderIteration, levelOrderRecursion, inOrder, preOrder, postOrder,
+  find, levelOrderIteration, levelOrderRecursion, inOrder, preOrder, postOrder, insert,
 } from './modules/functions/functions.js';
 import Tree from './modules/tree/bst.js';
 import getNumbers from './modules/data/generateNumbers.js';
@@ -11,6 +12,9 @@ const amount = 15;
 
 // Value to search for with search function
 const searchValue = 68;
+
+// Value to insert with insert function
+const insertValue = 123;
 
 // List of unique random numbers (< 100)
 const randomNumbersList = getNumbers(amount);
@@ -25,85 +29,95 @@ console.log('\n--------------------------------\n');
 
 
 
-// FIND function test
-console.log('SEARCH\nSearching for node ', searchValue, '...\n');
+// INSERT function test
 
-const foundNode = find(searchValue, bst.root);
-if (foundNode === null) {
-  console.log(`Node ${searchValue} not found!\n`);
-} else {
-  console.log(`Found node ${searchValue}:`, foundNode, '\n');
-}
+console.log('INSERT value', insertValue, '\n');
+insert(bst.root, insertValue);
 console.log('--------------------------------\n');
+console.log('Updated tree:\n');
+prettyPrint(bst.root);
+
+// // FIND function test
+// console.log('\nSEARCH for node ', searchValue, '...\n');
+
+// const foundNode = find(searchValue, bst.root);
+// if (foundNode === null) {
+//   console.log('\bNode', searchValue, 'not found!\n');
+// } else {
+//   console.log('Found node', searchValue, '\b:\n', foundNode, '\n');
+// }
+// console.log('--------------------------------\n');
 
 
 
-// LEVELORDER function test
+// // LEVELORDER function test
 
-// Basis callback function for testing
-const callback = (node) => { console.log(`\ncallback for: ${node.data}`); };
-
-
-// Using ITERATION without a callback function
-console.log('\nLEVEL ORDER traversal with ITERATION\n\nWithout callback function');
-const iterationResult = levelOrderIteration(bst.root);
-console.log('Array of values:', '\n', iterationResult, '\n');
-
-// Using ITERATION with a callback function
-console.log('With callback function');
-levelOrderIteration(bst.root, callback);
-console.log('\nCallbacks executed\n');
-
-// Using RECURSION without a callback function
-console.log('\nLEVEL ORDER traversal with RECURSION\nWithout callback function');
-const recursionWithoutCallbackResult = levelOrderRecursion(bst.root);
-console.log('Array of values:', '\n', recursionWithoutCallbackResult, '\n');
-
-// Using RECURSION with a callback function
-console.log('With callback function');
-levelOrderRecursion(bst.root, callback);
-console.log('\nCallbacks executed\n', '\n');
-console.log('--------------------------------\n');
+// // Optional callback function
+// const callback = (node) => { console.log(`\ncallback for: ${node.data}`); };
 
 
-// IN ORDER function test
+// // Using ITERATION without a callback function
+// console.log('\nLEVEL ORDER traversal with ITERATION\n\nWithout callback function');
+// const iterationResult = levelOrderIteration(bst.root);
+// console.log('Array of values:', '\n', iterationResult, '\n');
 
-// Traverse "in order" through the tree, without a callback function
-console.log('IN ORDER traversal\nWithout callback function');
-const inOrderResult = inOrder(bst.root);
-console.log('Array of values:', '\n', inOrderResult, '\n');
+// // Using ITERATION with a callback function
+// console.log('With callback function');
+// levelOrderIteration(bst.root, callback);
+// console.log('\nCallbacks executed\n');
 
-// Traverse "in order" through the tree, with a callback function
-console.log('With callback function');
-inOrder(bst.root, callback);
-console.log('\nCallbacks executed\n');
-console.log('--------------------------------\n');
+// // Using RECURSION without a callback function
+// console.log('\nLEVEL ORDER traversal with RECURSION\nWithout callback function');
+// const recursionWithoutCallbackResult = levelOrderRecursion(bst.root);
+// console.log('Array of values:', '\n', recursionWithoutCallbackResult, '\n');
 
-
-// PRE ORDER function test
-
-// Traverse "pre order" through the tree, without a callback function
-console.log('\nPRE ORDER traversal\nWithout callback function');
-const preOrderResult = preOrder(bst.root);
-console.log('Array of values:', '\n', preOrderResult, '\n');
-
-// Traverse "pre order" through the tree, with a callback function
-console.log('With callback function');
-preOrder(bst.root, callback);
-console.log('\nCallbacks executed\n');
-console.log('--------------------------------\n');
+// // Using RECURSION with a callback function
+// console.log('With callback function');
+// levelOrderRecursion(bst.root, callback);
+// console.log('\nCallbacks executed\n', '\n');
+// console.log('--------------------------------\n');
 
 
 
-// POST ORDER function test
+// // IN ORDER function test
 
-// Traverse "pre order" through the tree, without a callback function
-console.log('POST ORDER traversal\nWithout callback function');
-const postOrderResult = postOrder(bst.root);
-console.log('Array of values:', '\n', postOrderResult, '\n');
+// // Traverse "in order" through the tree, without a callback function
+// console.log('IN ORDER traversal\nWithout callback function');
+// const inOrderResult = inOrder(bst.root);
+// console.log('Array of values:', '\n', inOrderResult, '\n');
 
-// Traverse "post order" through the tree, with a callback function
-console.log('With callback function');
-postOrder(bst.root, callback);
-console.log('\nCallbacks executed\n');
-console.log('--------------------------------\n');
+// // Traverse "in order" through the tree, with a callback function
+// console.log('With callback function');
+// inOrder(bst.root, callback);
+// console.log('\nCallbacks executed\n');
+// console.log('--------------------------------\n');
+
+
+
+// // PRE ORDER function test
+
+// // Traverse "pre order" through the tree, without a callback function
+// console.log('\nPRE ORDER traversal\nWithout callback function');
+// const preOrderResult = preOrder(bst.root);
+// console.log('Array of values:', '\n', preOrderResult, '\n');
+
+// // Traverse "pre order" through the tree, with a callback function
+// console.log('With callback function');
+// preOrder(bst.root, callback);
+// console.log('\nCallbacks executed\n');
+// console.log('--------------------------------\n');
+
+
+
+// // POST ORDER function test
+
+// // Traverse "pre order" through the tree, without a callback function
+// console.log('POST ORDER traversal\nWithout callback function');
+// const postOrderResult = postOrder(bst.root);
+// console.log('Array of values:', '\n', postOrderResult, '\n');
+
+// // Traverse "post order" through the tree, with a callback function
+// console.log('With callback function');
+// postOrder(bst.root, callback);
+// console.log('\nCallbacks executed\n');
+// console.log('--------------------------------\n');

@@ -1,20 +1,40 @@
+import createNode from '../tree/node.js';
 
 // Asignment:
 // Write insert and delete functions that accepts a value to insert/delete.
 // You’ll have to deal with several cases for delete, such as when a node has children or not.
 
-// insert(value) {
+export function insert(root, value) {
+  // Value already exists in tree: return error
+
+  // Base case
+  if (root === null) return null;
+
+  // Value already excists, show error
+  if (root.data === value) return false;
+
+  // Traverse through tree
+  if (value < root.data) return insert(root.left, value);
+  if (value > root.data) return insert(root.right, value);
+
+  // Leaf node found, add child node with new value
+  if (root.left !== null && root.right !== null) {
+    console.log('leaf node: ', root.data);
+
+    if (value < root.data) root.left = createNode(value);
+    if (value > root.data) root.right = createNode(value);
+  }
+
+  return root;
+}
+
+// export function delete(value) {
 
 // }
 
-// delete(value) {
-
-// }
 
 
-
-// Asignment:
-// Write a find function that accepts a value and returns the node with the given value.
+// Asignment: Write a find function that accepts a value and returns the node with the given value.
 export function find(value, root) {
 
   // Base Case: check if the value is present in the tree or if the root already has the value.
@@ -55,16 +75,14 @@ export function levelOrderIteration(root, callback) {
     // Get first item from queue
     const currentNode = queue.shift();
 
-    // Execute callback function, skip filling the result list
-    if (callback !== undefined) {
+    // Store value of current node (unless there is a callback function)
+    if (callback) {
       callback(currentNode);
     } else {
-
-      // If no callback function is given, fill result list in level order
       result.push(currentNode.data);
     }
 
-    // Push left and right node to queue
+    // Add left and/or right child to queue
     if (currentNode.left) queue.push(currentNode.left);
     if (currentNode.right) queue.push(currentNode.right);
   }
@@ -79,22 +97,24 @@ function levelOrderHelper(root, result, queue, callback) {
   // Base case
   if (root === null) return null;
 
+  // Add left and/or right child to queue
   if (root.left) queue.push(root.left);
   if (root.right) queue.push(root.right);
 
-  // Execute callback function, skip filling the result list
+  // Store value of current node, unless there is a callback function
   if (callback) {
     callback(root);
   } else {
-
-    // If no callback function is given, fill result list in level order
     result.push(root.data);
   }
 
+  // As long as there are items in the queue
   if (queue.length) {
+
+    // Get first item from queue
     const currentNode = queue.shift();
 
-    // Recursive call for each node in queue
+    // Recursively visit each node in queue
     levelOrderHelper(currentNode, result, queue, callback);
   }
 
@@ -121,9 +141,10 @@ export function levelOrderRecursion(root, callback) {
 /** ***** PRE ORDER TRAVERSAL ***** */
 
 function preOrderHelper(root, result, callback) {
+
   if (root === null) return null;
 
-  // First store value of rootnode (unless there is a callback)
+  // First store value of root node, unless there is a callback function
   if (callback) {
     callback(root);
   } else {
@@ -156,7 +177,7 @@ function inOrderHelper(root, result, callback) {
   // First traverse through left subtree
   inOrderHelper(root.left, result, callback);
 
-  // Then store value of rootnode (unless there is a callback)
+  // Then store value of root node, unless there is a callback function
   if (callback) {
     callback(root);
   } else {
@@ -180,6 +201,7 @@ export function inOrder(root, callback) {
 /** ***** POST ORDER TRAVERSAL ***** */
 
 function postOrderHelper(root, result, callback) {
+
   if (root === null) return null;
 
   // First traverse through left subtree
@@ -188,7 +210,7 @@ function postOrderHelper(root, result, callback) {
   // Then traverse through right subtree
   postOrderHelper(root.right, result, callback);
 
-  // At last, store value of rootnode (unless there is a callback)
+  // At last, store value of root node, unless there is a callback function
   if (callback) {
     callback(root);
   } else {
