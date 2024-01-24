@@ -77,7 +77,7 @@ export function levelOrderIteration(root, callback) {
 function levelOrderHelper(root, result, queue, callback) {
 
   // Base case
-  if (root === null) return;
+  if (root === null) return null;
 
   if (root.left) queue.push(root.left);
   if (root.right) queue.push(root.right);
@@ -97,23 +97,15 @@ function levelOrderHelper(root, result, queue, callback) {
     // Recursive call for each node in queue
     levelOrderHelper(currentNode, result, queue, callback);
   }
+
+  return result;
 }
 
 export function levelOrderRecursion(root, callback) {
   const result = [];
   const queue = [];
 
-  if (root) {
-    if (callback) {
-      callback(root);
-    } else {
-      result.push(root.data);
-    }
-
-    levelOrderHelper(root, result, queue, callback);
-  }
-
-  return result;
+  return levelOrderHelper(root, result, queue, callback);
 }
 
 
@@ -125,17 +117,92 @@ export function levelOrderRecursion(root, callback) {
   The functions should return an array of values if no callback is given as an argument.
 */
 
-// inOrder(root, callback) {
 
-// }
+/** ***** PRE ORDER TRAVERSAL ***** */
 
-// preOrder(root, callback) {
+function preOrderHelper(root, result, callback) {
+  if (root === null) return null;
 
-// }
+  // First store value of rootnode (unless there is a callback)
+  if (callback) {
+    callback(root);
+  } else {
+    result.push(root.data);
+  }
 
-// postOrder(root, callback) {
+  // Then traverse through left subtree
+  preOrderHelper(root.left, result, callback);
 
-// }
+  // At last, traverse through right subtree
+  preOrderHelper(root.right, result, callback);
+
+  return result;
+}
+
+export function preOrder(root, callback) {
+  const result = [];
+
+  return preOrderHelper(root, result, callback);
+}
+
+
+
+/** ***** IN ORDER TRAVERSAL ***** */
+
+function inOrderHelper(root, result, callback) {
+
+  if (root === null) return null;
+
+  // First traverse through left subtree
+  inOrderHelper(root.left, result, callback);
+
+  // Then store value of rootnode (unless there is a callback)
+  if (callback) {
+    callback(root);
+  } else {
+    result.push(root.data);
+  }
+
+  // At last, traverse through right subtree
+  inOrderHelper(root.right, result, callback);
+
+  return result;
+}
+
+export function inOrder(root, callback) {
+  const result = [];
+
+  return inOrderHelper(root, result, callback);
+}
+
+
+
+/** ***** POST ORDER TRAVERSAL ***** */
+
+function postOrderHelper(root, result, callback) {
+  if (root === null) return null;
+
+  // First traverse through left subtree
+  postOrderHelper(root.left, result, callback);
+
+  // Then traverse through right subtree
+  postOrderHelper(root.right, result, callback);
+
+  // At last, store value of rootnode (unless there is a callback)
+  if (callback) {
+    callback(root);
+  } else {
+    result.push(root.data);
+  }
+
+  return result;
+}
+
+export function postOrder(root, callback) {
+  const result = [];
+
+  return postOrderHelper(root, result, callback);
+}
 
 
 
