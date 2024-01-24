@@ -40,30 +40,30 @@ console.log('--------------------------------\n');
 
 // LEVELORDER function test
 
-// Using ITERATION with a callback function
-console.log('LEVEL ORDER traversal with ITERATION\nWith callback function');
-const callbackA = (node) => { console.log(`\ncallback for: ${node.data}`); };
-levelOrderIteration(bst.root, callbackA);
-console.log('Callbacks executed\n');
+// Basis callback function for testing
+const callback = (node) => { console.log(`\ncallback for: ${node.data}`); };
+
 
 // Using ITERATION without a callback function
-console.log('LEVEL ORDER traversal with ITERATION\nWithout callback function');
+console.log('\nLEVEL ORDER traversal with ITERATION\n\nWithout callback function');
 const iterationResult = levelOrderIteration(bst.root);
 console.log('Array of values:', '\n', iterationResult, '\n');
-console.log('--------------------------------\n');
 
-// Using RECURSION with a callback function
-console.log('LEVEL ORDER traversal with RECURSION\nWith callback function');
-const callbackB = (node) => { console.log(`\ncallback for: ${node.data}`); };
-const recursionResult = levelOrderRecursion(bst.root, callbackB);
-console.log('Callbacks executed\n', recursionResult, '\n');
+// Using ITERATION with a callback function
+console.log('With callback function');
+levelOrderIteration(bst.root, callback);
+console.log('\nCallbacks executed\n');
 
 // Using RECURSION without a callback function
-console.log('LEVEL ORDER traversal with RECURSION\nWithout callback function');
+console.log('\nLEVEL ORDER traversal with RECURSION\nWithout callback function');
 const recursionWithoutCallbackResult = levelOrderRecursion(bst.root);
 console.log('Array of values:', '\n', recursionWithoutCallbackResult, '\n');
-console.log('--------------------------------\n');
 
+// Using RECURSION with a callback function
+console.log('With callback function');
+levelOrderRecursion(bst.root, callback);
+console.log('\nCallbacks executed\n', '\n');
+console.log('--------------------------------\n');
 
 
 // IN ORDER function test
@@ -74,26 +74,23 @@ const inOrderResult = inOrder(bst.root);
 console.log('Array of values:', '\n', inOrderResult, '\n');
 
 // Traverse "in order" through the tree, with a callback function
-console.log('IN ORDER traversal\nWith callback function');
-const callbackC = (node) => { console.log(`\ncallback for: ${node.data}`); };
-const inOrderWithCallbackResult = inOrder(bst.root, callbackC);
-console.log('Callbacks executed\n', inOrderWithCallbackResult, '\n');
+console.log('With callback function');
+inOrder(bst.root, callback);
+console.log('\nCallbacks executed\n');
 console.log('--------------------------------\n');
-
 
 
 // PRE ORDER function test
 
 // Traverse "pre order" through the tree, without a callback function
-console.log('PRE ORDER traversal\nWithout callback function');
+console.log('\nPRE ORDER traversal\nWithout callback function');
 const preOrderResult = preOrder(bst.root);
 console.log('Array of values:', '\n', preOrderResult, '\n');
 
 // Traverse "pre order" through the tree, with a callback function
-console.log('PRE ORDER traversal\nWith callback function');
-const callbackD = (node) => { console.log(`\ncallback for: ${node.data}`); };
-const preOrderWithCallbackResult = preOrder(bst.root, callbackD);
-console.log('Callbacks executed\n', preOrderWithCallbackResult, '\n');
+console.log('With callback function');
+preOrder(bst.root, callback);
+console.log('\nCallbacks executed\n');
 console.log('--------------------------------\n');
 
 
@@ -101,13 +98,12 @@ console.log('--------------------------------\n');
 // POST ORDER function test
 
 // Traverse "pre order" through the tree, without a callback function
-console.log('post ORDER traversal\nWithout callback function');
+console.log('POST ORDER traversal\nWithout callback function');
 const postOrderResult = postOrder(bst.root);
 console.log('Array of values:', '\n', postOrderResult, '\n');
 
 // Traverse "post order" through the tree, with a callback function
-console.log('post ORDER traversal\nWith callback function');
-const callbackE = (node) => { console.log(`\ncallback for: ${node.data}`); };
-const postOrderWithCallbackResult = postOrder(bst.root, callbackE);
-console.log('Callbacks executed\n', postOrderWithCallbackResult, '\n');
+console.log('With callback function');
+postOrder(bst.root, callback);
+console.log('\nCallbacks executed\n');
 console.log('--------------------------------\n');
