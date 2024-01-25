@@ -14,15 +14,15 @@ const amount = 15;
 const searchValue = 68;
 
 // Value to insert with insert function
-const insertValue = 123;
+const insertValue = 12;
 
-// List of unique random numbers (< 100)
+// Sorted list of unique random numbers (< 100)
 const randomNumbersList = getNumbers(amount);
 
-// Convert sorted array to balanced BST
+// Create BST from sorted list
 const bst = new Tree(randomNumbersList);
 
-// Visualize the tree
+// Visualize the tree in terminal
 console.log('Visualization of tree:\n');
 prettyPrint(bst.root);
 console.log('\n--------------------------------\n');

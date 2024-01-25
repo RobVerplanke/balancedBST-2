@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+
 import createNode from '../tree/node.js';
 
 // Asignment:
@@ -5,45 +7,38 @@ import createNode from '../tree/node.js';
 // You’ll have to deal with several cases for delete, such as when a node has children or not.
 
 export function insert(root, value) {
-  // Value already exists in tree: return error
 
-  // Base case
-  if (root === null) return null;
+  // Base case: if node is empty create new node
+  if (!root) return createNode(value);
 
-  // Value already excists, show error
-  if (root.data === value) return false;
+  // When a duplicate value is found, do nothing
+  if (root.data === value) return root;
 
-  // Traverse through tree
-  if (value < root.data) return insert(root.left, value);
-  if (value > root.data) return insert(root.right, value);
-
-  // Leaf node found, add child node with new value
-  if (root.left !== null && root.right !== null) {
-    console.log('leaf node: ', root.data);
-
-    if (value < root.data) root.left = createNode(value);
-    if (value > root.data) root.right = createNode(value);
-  }
+  // Recursive call
+  if (value < root.data) root.left = insert(root.left, value);
+  if (value > root.data) root.right = insert(root.right, value);
 
   return root;
 }
 
+
+
 // export function delete(value) {
 
-// }
+//  }
 
 
 
 // Asignment: Write a find function that accepts a value and returns the node with the given value.
 export function find(value, root) {
 
-  // Base Case: check if the value is present in the tree or if the root already has the value.
+  // Base Case: check if the value is present in the tree or if the root already has the value
   if (root === null || value === root.data) return root;
 
-  // Value is smaller than current root's data: iterate through left subtree
+  // Value is smaller than current root's data: go to left subtree
   if (value < root.data) return find(value, root.left);
 
-  // Value is greater than current root's data: iterate through right subtree
+  // Value is greater than current root's data: go to right subtree
   if (value > root.data) return find(value, root.right);
 
   return null;
