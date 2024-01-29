@@ -1,8 +1,10 @@
 /* eslint-disable no-param-reassign */
+
 // Node has NO children (true/false)
 export function isLeaf(node) {
   return node.left === null && node.right === null;
 }
+
 
 // Node has ONE child (true/false)
 export function hasOneChild(node) {
@@ -10,13 +12,12 @@ export function hasOneChild(node) {
          || (node.left !== null && node.right === null);
 }
 
+
 // Get parent of node
 export function getParent(root, node) {
 
   // Base Case: root is null or root is same as the given node
-  if (root === null || root === node) {
-    return null;
-  }
+  if (root === null || root === node) return null;
 
   // Value is present in left or right children
   if (root.left === node || root.right === node) return root;
