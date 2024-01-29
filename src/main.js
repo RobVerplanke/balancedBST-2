@@ -59,8 +59,7 @@ console.log('REMOVE value', removeValue, '\n');
 if (remove(bst.root, removeValue) === null) {
   console.log('Value not found!');
 } else {
-  console.log('removing node: ');
-  console.log(remove(bst.root, removeValue));
+  console.log('REMOVED\n');
 }
 
 

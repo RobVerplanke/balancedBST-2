@@ -1,8 +1,11 @@
 /* eslint-disable no-param-reassign */
 
 import createNode from '../tree/node.js';
+import { isLeaf, hasOneChild, getParent } from './helperFunctions.js';
 
 // Asignment: Write a find function that accepts a value and returns the node with the given value.
+
+// FIND
 export function find(root, value) {
 
   // Base Case: check if the value is present in the tree or if the root already has the value
@@ -17,11 +20,13 @@ export function find(root, value) {
   return null;
 }
 
+
+
 // Asignment:
 // Write insert and delete functions that accepts a value to insert/delete.
 // You’ll have to deal with several cases for delete, such as when a node has children or not.
 
-// Insert
+// INSERT
 export function insert(root, value) {
 
   // Base case: create new node if root is empty
@@ -38,36 +43,46 @@ export function insert(root, value) {
 }
 
 
-// Delete
+// DELETE
 export function remove(root, value) {
 
+  // First find the node to be removed
   const node = find(root, value);
 
-  // If value doest not exist in tree, return null
+  // If value doesn't not exist in tree, return null
   if (node === null) return null;
 
-  // If value does exist, make copy of node to return
+  // If value exists, make copy of node for return
+  const currentNode = node;
 
-  // IF found node is leaf (write isLeaf function), remove link in parent (write getParent function)
-  // and delete node (=== null)
-  // Return copy of node
+  // Node is leaf node
+  if (isLeaf(node)) {
+    const parentNode = getParent(root, node);
+    console.log('parent found: ', parentNode);
+    // remove link in parent (write getParent function)
+    // delete node (=== null)
 
-  // If node has one child (write hasOneChild function),
-  // Get parent
-  // Check if found node is left or richt child of parent
-  // Check if chilf of found node is left or right child
-  // Replace parent node value with found node childs value
-  // Return copy of node
+    return currentNode;
+  }
 
-  // If node had 2 children
+  // Node has one child
+  if (hasOneChild(node)) {
+
+    // Get parent
+    // Check if found node is left or richt child of parent
+    // Check if chilf of found node is left or right child
+    // Replace parent node value with found node childs value
+
+    return currentNode;
+  }
+
+  // Node has 2 children
   // Get parent
   // Get in order successor (use inOrder function) (next lowest value in subtree)
   // Set parent link to in order succesor
   // Set corresponding children of found node to parent node
-  // return copy of node
-  return node;
 
-  //
+  return currentNode;
 }
 
 
@@ -82,7 +97,7 @@ export function remove(root, value) {
   The method should return an array of values if no callback is given as an argument.
 */
 
-// Bfs using ITERATION
+// BFS using ITERATION
 export function levelOrderIteration(root, callback) {
   const result = [];
   const queue = [];
@@ -112,7 +127,7 @@ export function levelOrderIteration(root, callback) {
 }
 
 
-// Bfs using RECURSION
+// BFS using RECURSION
 function levelOrderHelper(root, result, queue, callback) {
 
   // Base case
@@ -159,7 +174,7 @@ export function levelOrderRecursion(root, callback) {
 */
 
 
-/** ***** PRE ORDER TRAVERSAL ***** */
+// PRE ORDER TRAVERSAL
 
 function preOrderHelper(root, result, callback) {
 
@@ -188,8 +203,7 @@ export function preOrder(root, callback) {
 }
 
 
-
-/** ***** IN ORDER TRAVERSAL ***** */
+// IN ORDER TRAVERSAL
 
 function inOrderHelper(root, result, callback) {
 
@@ -218,8 +232,7 @@ export function inOrder(root, callback) {
 }
 
 
-
-/** ***** POST ORDER TRAVERSAL ***** */
+// POST ORDER TRAVERSAL
 
 function postOrderHelper(root, result, callback) {
 
