@@ -55,12 +55,15 @@ export function remove(root, value) {
   // If value exists, make copy of node for return
   const currentNode = node;
 
-  // Node is leaf node
+  // Node is a leaf node
   if (isLeaf(node)) {
-    const parentNode = getParent(root, node);
-    console.log('parent found: ', parentNode);
+
     // remove link in parent (write getParent function)
-    // delete node (=== null)
+    const parentNode = getParent(root, node);
+
+    // delete left or right connection from parent
+    if (parentNode.left === node) parentNode.left = null;
+    if (parentNode.right === node) parentNode.right = null;
 
     return currentNode;
   }
@@ -69,6 +72,8 @@ export function remove(root, value) {
   if (hasOneChild(node)) {
 
     // Get parent
+    // const parentNode = getParent(root, node);
+
     // Check if found node is left or richt child of parent
     // Check if chilf of found node is left or right child
     // Replace parent node value with found node childs value
@@ -78,6 +83,8 @@ export function remove(root, value) {
 
   // Node has 2 children
   // Get parent
+  // const parentNode = getParent(root, node);
+
   // Get in order successor (use inOrder function) (next lowest value in subtree)
   // Set parent link to in order succesor
   // Set corresponding children of found node to parent node

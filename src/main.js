@@ -59,7 +59,10 @@ console.log('REMOVE value', removeValue, '\n');
 if (remove(bst.root, removeValue) === null) {
   console.log('Value not found!');
 } else {
-  console.log('REMOVED\n');
+  console.log('REMOVED leaf node\n');
+  console.log('Updated tree:\n');
+  prettyPrint(bst.root);
+  console.log('\n--------------------------------\n');
 }
 
 
