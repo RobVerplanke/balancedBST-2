@@ -31,15 +31,6 @@ prettyPrint(bst.root);
 console.log('\n--------------------------------\n');
 
 
-
-// INSERT function test
-
-// console.log('INSERT value', insertValue, '\n');
-// insert(bst.root, insertValue);
-// console.log('--------------------------------\n');
-// console.log('Updated tree:\n');
-// prettyPrint(bst.root);
-
 // FIND function test
 // console.log('\nSEARCH for node ', searchValue, '...\n');
 // const foundNode = find(bst.root, searchValue);
@@ -51,6 +42,17 @@ console.log('\n--------------------------------\n');
 // console.log('--------------------------------\n');
 
 
+
+// INSERT function test
+
+// console.log('INSERT value', insertValue, '\n');
+// insert(bst.root, insertValue);
+// console.log('--------------------------------\n');
+// console.log('Updated tree:\n');
+// prettyPrint(bst.root);
+
+
+
 // DELETE function test
 
 console.log('REMOVE value', removeValue, '\n');
@@ -60,6 +62,7 @@ if (remove(bst.root, removeValue) === null) {
   console.log('removing node: ');
   console.log(remove(bst.root, removeValue));
 }
+
 
 
 // // LEVELORDER function test
