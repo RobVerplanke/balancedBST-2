@@ -2,19 +2,35 @@
 
 import createNode from '../tree/node.js';
 
+// Asignment: Write a find function that accepts a value and returns the node with the given value.
+export function find(root, value) {
+
+  // Base Case: check if the value is present in the tree or if the root already has the value
+  if (root === null || value === root.data) return root;
+
+  // Value is smaller than current root's data: go to left subtree
+  if (value < root.data) return find(root.left, value);
+
+  // Value is greater than current root's data: go to right subtree
+  if (value > root.data) return find(root.right, value);
+
+  return null;
+}
+
 // Asignment:
 // Write insert and delete functions that accepts a value to insert/delete.
 // You’ll have to deal with several cases for delete, such as when a node has children or not.
 
+// Insert
 export function insert(root, value) {
 
-  // Base case: if node is empty create new node
+  // Base case: create new node if root is empty
   if (!root) return createNode(value);
 
   // When a duplicate value is found, do nothing
   if (root.data === value) return root;
 
-  // Recursive call
+  // Recursively traverse through subtree
   if (value < root.data) root.left = insert(root.left, value);
   if (value > root.data) root.right = insert(root.right, value);
 
@@ -22,26 +38,36 @@ export function insert(root, value) {
 }
 
 
+// Delete
+export function remove(root, value) {
 
-// export function delete(value) {
+  const node = find(root, value);
 
-//  }
+  // If value doest not exist in tree, return null
+  if (node === null) return null;
 
+  // If value does exist, make copy of node to return
 
+  // IF found node is leaf (write isLeaf function), remove link in parent (write getParent function)
+  // and delete node (=== null)
+  // Return copy of node
 
-// Asignment: Write a find function that accepts a value and returns the node with the given value.
-export function find(value, root) {
+  // If node has one child (write hasOneChild function),
+  // Get parent
+  // Check if found node is left or richt child of parent
+  // Check if chilf of found node is left or right child
+  // Replace parent node value with found node childs value
+  // Return copy of node
 
-  // Base Case: check if the value is present in the tree or if the root already has the value
-  if (root === null || value === root.data) return root;
+  // If node had 2 children
+  // Get parent
+  // Get in order successor (use inOrder function) (next lowest value in subtree)
+  // Set parent link to in order succesor
+  // Set corresponding children of found node to parent node
+  // return copy of node
+  return node;
 
-  // Value is smaller than current root's data: go to left subtree
-  if (value < root.data) return find(value, root.left);
-
-  // Value is greater than current root's data: go to right subtree
-  if (value > root.data) return find(value, root.right);
-
-  return null;
+  //
 }
 
 

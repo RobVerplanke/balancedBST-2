@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import {
-  find, levelOrderIteration, levelOrderRecursion, inOrder, preOrder, postOrder, insert,
+  find, levelOrderIteration, levelOrderRecursion, inOrder, preOrder, postOrder, insert, remove,
 } from './modules/functions/functions.js';
 import Tree from './modules/tree/bst.js';
 import getNumbers from './modules/data/generateNumbers.js';
@@ -15,6 +15,9 @@ const searchValue = 68;
 
 // Value to insert with insert function
 const insertValue = 12;
+
+// Value to remove with remove function
+const removeValue = 4;
 
 // Sorted list of unique random numbers (< 100)
 const randomNumbersList = getNumbers(amount);
@@ -31,16 +34,15 @@ console.log('\n--------------------------------\n');
 
 // INSERT function test
 
-console.log('INSERT value', insertValue, '\n');
-insert(bst.root, insertValue);
-console.log('--------------------------------\n');
-console.log('Updated tree:\n');
-prettyPrint(bst.root);
+// console.log('INSERT value', insertValue, '\n');
+// insert(bst.root, insertValue);
+// console.log('--------------------------------\n');
+// console.log('Updated tree:\n');
+// prettyPrint(bst.root);
 
-// // FIND function test
+// FIND function test
 // console.log('\nSEARCH for node ', searchValue, '...\n');
-
-// const foundNode = find(searchValue, bst.root);
+// const foundNode = find(bst.root, searchValue);
 // if (foundNode === null) {
 //   console.log('\bNode', searchValue, 'not found!\n');
 // } else {
@@ -48,6 +50,16 @@ prettyPrint(bst.root);
 // }
 // console.log('--------------------------------\n');
 
+
+// DELETE function test
+
+console.log('REMOVE value', removeValue, '\n');
+if (remove(bst.root, removeValue) === null) {
+  console.log('Value not found!');
+} else {
+  console.log('removing node: ');
+  console.log(remove(bst.root, removeValue));
+}
 
 
 // // LEVELORDER function test
