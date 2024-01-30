@@ -16,16 +16,16 @@ export function hasOneChild(node) {
 // Get parent of node
 export function getParent(root, node) {
 
-  // Base Case: root is null or root is same as the given node
+  // Base Case
   if (root === null || root === node) return null;
 
-  // Value is present in left or right children
+  // Node is in left or right child
   if (root.left === node || root.right === node) return root;
 
-  // Value is smaller than current root's data: go to left subtree
+  // Search value is smaller than current root's data: go to left subtree
   if (node.data < root.data) return getParent(root.left, node);
 
-  // Value is greater than current root's data: go to right subtree
+  // Search value is greater than current root's data: go to right subtree
   if (node.data > root.data) return getParent(root.right, node);
 
   return null;

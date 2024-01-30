@@ -8,7 +8,7 @@ import prettyPrint from './modules/pretty-print/prettyPrint.js';
 
 
 // Desired amount of nodes in the tree
-const amount = 15;
+const amount = 11;
 
 // Value to search for with search function
 const searchValue = 68;
@@ -17,7 +17,7 @@ const searchValue = 68;
 const insertValue = 12;
 
 // Value to remove with remove function
-const removeValue = 4;
+const removeValue = 8;
 
 // Sorted list of unique random numbers (< 100)
 const randomNumbersList = getNumbers(amount);

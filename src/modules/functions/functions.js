@@ -46,19 +46,17 @@ export function insert(root, value) {
 // DELETE
 export function remove(root, value) {
 
-  // First find the node to be removed
+  // Find node to be removed
   const node = find(root, value);
 
-  // If value doesn't not exist in tree, return null
+  // Node doesn't not exist
   if (node === null) return null;
 
-  // If value exists, make copy of node for return
+  // Node exists
   const currentNode = node;
 
   // Node is a leaf node
   if (isLeaf(node)) {
-
-    // remove link in parent (write getParent function)
     const parentNode = getParent(root, node);
 
     // delete left or right connection from parent
@@ -72,11 +70,27 @@ export function remove(root, value) {
   if (hasOneChild(node)) {
 
     // Get parent
-    // const parentNode = getParent(root, node);
+    const parentNode = getParent(root, node);
 
-    // Check if found node is left or richt child of parent
-    // Check if chilf of found node is left or right child
-    // Replace parent node value with found node childs value
+    // Node is root of BST
+    if (parentNode === null) return null;
+
+    // Check parent, node is left or right child
+    if (parentNode.left === node) {
+      // Check node, child of node is left or right child
+      if (node.left !== null) {
+        // Replace parent's value with node's child value
+        parentNode.left = node.left;
+      } else {
+        parentNode.left = node.right;
+      }
+    } else if (parentNode.right === node) {
+      if (node.left !== null) {
+        parentNode.right = node.left;
+      } else {
+        parentNode.right = node.right;
+      }
+    }
 
     return currentNode;
   }
