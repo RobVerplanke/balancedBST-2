@@ -8,7 +8,7 @@ import prettyPrint from './modules/pretty-print/prettyPrint.js';
 
 
 // Desired amount of nodes in the tree
-const amount = 50;
+const amount = 33;
 
 // Value to search for with search function
 const searchValue = 68;

@@ -62,7 +62,7 @@ export function remove(root, value) {
     if (parentNode.left === node) parentNode.left = null;
     if (parentNode.right === node) parentNode.right = null;
 
-    console.log('REMOVED\n');
+    console.log('REMOVED leaf node\n');
 
     return node;
   }
@@ -93,7 +93,7 @@ export function remove(root, value) {
       }
     }
 
-    console.log('REMOVED\n');
+    console.log('REMOVED parent of 1 node\n');
 
     return node;
   }
@@ -101,17 +101,14 @@ export function remove(root, value) {
   // Node has 2 children
   if (hasTwoChildren(node)) {
 
-    // Get parent
-    const parentNode = getParent(root, node);
-
-    // Node is root of BST
-    if (parentNode === null) return null;
-
-    // Set lowest value of left subtree as new node value
+    // Set in order successor of right subtree as new value
     const successor = getInorderSuc(node.right);
     node.data = successor.data;
 
-    console.log('REMOVED\n');
+    // Recursive call
+    node.right = remove(node.right, successor);
+
+    console.log('REMOVED parent of 2 nodes\n');
 
     return node;
   }
