@@ -12,6 +12,10 @@ export function hasOneChild(node) {
          || (node.left !== null && node.right === null);
 }
 
+// Node has TWO children (true/false)
+export function hasTwoChildren(node) {
+  return node.left !== null && node.right !== null;
+}
 
 // Get parent of node
 export function getParent(root, node) {
@@ -29,4 +33,10 @@ export function getParent(root, node) {
   if (node.data > root.data) return getParent(root.right, node);
 
   return null;
+}
+
+// Get next lowest value in (right) subtree
+export function getInorderSuc(node) {
+  while (node.left !== null) node = node.left;
+  return node;
 }

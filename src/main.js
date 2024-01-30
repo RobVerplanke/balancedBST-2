@@ -8,7 +8,7 @@ import prettyPrint from './modules/pretty-print/prettyPrint.js';
 
 
 // Desired amount of nodes in the tree
-const amount = 11;
+const amount = 50;
 
 // Value to search for with search function
 const searchValue = 68;
@@ -17,10 +17,12 @@ const searchValue = 68;
 const insertValue = 12;
 
 // Value to remove with remove function
-const removeValue = 8;
+const removeValue = 40;
 
 // Sorted list of unique random numbers (< 100)
 const randomNumbersList = getNumbers(amount);
+// const randomNumbersList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+
 
 // Create BST from sorted list
 const bst = new Tree(randomNumbersList);
@@ -59,7 +61,6 @@ console.log('REMOVE value', removeValue, '\n');
 if (remove(bst.root, removeValue) === null) {
   console.log('Value not found!');
 } else {
-  console.log('REMOVED leaf node\n');
   console.log('Updated tree:\n');
   prettyPrint(bst.root);
   console.log('\n--------------------------------\n');

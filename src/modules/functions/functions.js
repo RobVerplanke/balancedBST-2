@@ -1,7 +1,9 @@
 /* eslint-disable no-param-reassign */
 
 import createNode from '../tree/node.js';
-import { isLeaf, hasOneChild, getParent } from './helperFunctions.js';
+import {
+  isLeaf, hasOneChild, getParent, getInorderSuc, hasTwoChildren,
+} from './utils.js';
 
 // Asignment: Write a find function that accepts a value and returns the node with the given value.
 
@@ -19,7 +21,6 @@ export function find(root, value) {
 
   return null;
 }
-
 
 
 // Asignment:
@@ -43,7 +44,8 @@ export function insert(root, value) {
 }
 
 
-// DELETE
+// REMOVE
+
 export function remove(root, value) {
 
   // Find node to be removed
@@ -51,9 +53,6 @@ export function remove(root, value) {
 
   // Node doesn't not exist
   if (node === null) return null;
-
-  // Node exists
-  const currentNode = node;
 
   // Node is a leaf node
   if (isLeaf(node)) {
@@ -63,7 +62,9 @@ export function remove(root, value) {
     if (parentNode.left === node) parentNode.left = null;
     if (parentNode.right === node) parentNode.right = null;
 
-    return currentNode;
+    console.log('REMOVED\n');
+
+    return node;
   }
 
   // Node has one child
@@ -92,20 +93,31 @@ export function remove(root, value) {
       }
     }
 
-    return currentNode;
+    console.log('REMOVED\n');
+
+    return node;
   }
 
   // Node has 2 children
-  // Get parent
-  // const parentNode = getParent(root, node);
+  if (hasTwoChildren(node)) {
 
-  // Get in order successor (use inOrder function) (next lowest value in subtree)
-  // Set parent link to in order succesor
-  // Set corresponding children of found node to parent node
+    // Get parent
+    const parentNode = getParent(root, node);
 
-  return currentNode;
+    // Node is root of BST
+    if (parentNode === null) return null;
+
+    // Set lowest value of left subtree as new node value
+    const successor = getInorderSuc(node.right);
+    node.data = successor.data;
+
+    console.log('REMOVED\n');
+
+    return node;
+  }
+
+  return node;
 }
-
 
 
 /* Assignment:
