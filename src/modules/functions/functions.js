@@ -23,6 +23,7 @@ export function find(root, value) {
 }
 
 
+
 // Asignment:
 // Write insert and delete functions that accepts a value to insert/delete.
 // You’ll have to deal with several cases for delete, such as when a node has children or not.
@@ -54,14 +55,17 @@ export function remove(root, value) {
   // Node doesn't not exist
   if (node === null) return null;
 
+  if (root.data === value) return null;
+
   // Node is a leaf node
   if (isLeaf(node)) {
     const parentNode = getParent(root, node);
 
     // delete left or right connection from parent
-    if (parentNode.left === node) parentNode.left = null;
-    if (parentNode.right === node) parentNode.right = null;
-
+    if (parentNode !== null) {
+      if (parentNode.left === node) parentNode.left = null;
+      if (parentNode.right === node) parentNode.right = null;
+    }
     console.log('REMOVED leaf node\n');
 
     return node;
@@ -103,10 +107,11 @@ export function remove(root, value) {
 
     // Set in order successor of right subtree as new value
     const successor = getInorderSuc(node.right);
+
     node.data = successor.data;
 
-    // Recursive call
-    node.right = remove(node.right, successor);
+    // Recursive call: remove successsor node
+    remove(node.right, successor.data);
 
     console.log('REMOVED parent of 2 nodes\n');
 
@@ -115,6 +120,7 @@ export function remove(root, value) {
 
   return node;
 }
+
 
 
 /* Assignment:
@@ -127,7 +133,7 @@ export function remove(root, value) {
   The method should return an array of values if no callback is given as an argument.
 */
 
-// BFS using ITERATION
+// LEVEL ORDER with ITERATION
 export function levelOrderIteration(root, callback) {
   const result = [];
   const queue = [];
@@ -157,7 +163,7 @@ export function levelOrderIteration(root, callback) {
 }
 
 
-// BFS using RECURSION
+// LEVEL ORDER with RECURSION
 function levelOrderHelper(root, result, queue, callback) {
 
   // Base case
