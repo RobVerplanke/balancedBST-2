@@ -55,8 +55,6 @@ export function remove(root, value) {
   // Node doesn't not exist
   if (node === null) return null;
 
-  if (root.data === value) return null;
-
   // Node is a leaf node
   if (isLeaf(node)) {
     const parentNode = getParent(root, node);
@@ -107,7 +105,6 @@ export function remove(root, value) {
 
     // Set in order successor of right subtree as new value
     const successor = getInorderSuc(node.right);
-
     node.data = successor.data;
 
     // Recursive call: remove successsor node
