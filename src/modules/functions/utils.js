@@ -40,3 +40,9 @@ export function getInorderSuc(node) {
   while (node.left !== null) node = node.left;
   return node;
 }
+
+// Get max value of the two
+export function getMax(firstVal, secondVal) {
+  return Math.max(firstVal, secondVal);
+}
+
