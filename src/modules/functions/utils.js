@@ -42,7 +42,7 @@ export function getInorderSuc(node) {
 }
 
 // Get max value of the two
-export function getMax(firstVal, secondVal) {
-  return Math.max(firstVal, secondVal);
+export function getMax(leftHalf, rightHalf) {
+  return Math.max(leftHalf, rightHalf);
 }
 

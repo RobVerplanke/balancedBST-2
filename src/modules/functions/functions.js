@@ -263,6 +263,7 @@ export function postOrder(root, callback) {
   return postOrderHelper(root, result, callback);
 }
 
+
 // HEIGHT
 export function getHeight(root) {
 
@@ -270,17 +271,46 @@ export function getHeight(root) {
   if (root === null) return -1;
 
   // Recursively traverse through tree
-  const leftHeight = getHeight(root.left);
-  const rightHeight = getHeight(root.right);
+  const leftHalf = getHeight(root.left);
+  const rightHalf = getHeight(root.right);
 
   // Nodes are visited
-  return getMax(leftHeight, rightHeight) + 1;
+  return getMax(leftHalf, rightHalf) + 1;
 }
 
-// depth(node) {
 
+// DEPTH
+export function getDepth(root, node) {
+
+  if (root === null) return 0;
+  if (root.left === node || root.right === node) return 1;
+
+  // Recursively traverse through tree
+  let leftHalf = getDepth(root.left, node);
+  let rightHalf = getDepth(root.right, node);
+
+  if (leftHalf) leftHalf++;
+  if (rightHalf) rightHalf++;
+
+  return getMax(leftHalf, rightHalf);
+}
+
+// export function getDepth(root, node) {
+
+//   // Base case: reached end of (sub)tree or node is found
+//   if (root === null) return 0;
+//   if (root === node) return 0;
+
+//   // Recursively traverse through tree
+//   let leftHalf = getDepth(root.left);
+//   let rightHalf = getDepth(root.right);
+
+//   // Add depth level
+//   if (leftHalf > 0) leftHalf++;
+//   if (rightHalf > 0) rightHalf++;
+
+//   return getMax(leftHalf, rightHalf) + 1;
 // }
-
 
 // isBalanced() {
 

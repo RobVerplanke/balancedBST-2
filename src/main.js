@@ -37,7 +37,7 @@
 /* eslint-disable no-unused-vars */
 import {
   find, levelOrderIteration, levelOrderRecursion, inOrder, preOrder, postOrder, insert, remove,
-  getHeight,
+  getHeight, getDepth,
 } from './modules/functions/functions.js';
 import Tree from './modules/tree/bst.js';
 import getNumbers from './modules/data/generateNumbers.js';
@@ -58,6 +58,8 @@ const removeValue = 39;
 
 // Value to request the height of
 const heightValue = 72;
+
+const depthValue = 34;
 
 // Sorted list of unique random numbers (< 100)
 const randomNumbersList = getNumbers(amount);
@@ -185,9 +187,20 @@ console.log('\n--------------------------------\n');
 // HEIGHT test
 
 // Get corresponding node
-const node = find(bst.root, heightValue);
-if (getHeight(node) > 0) {
-  console.log('Height of node', heightValue, 'is: ', getHeight(node));
+// const node = find(bst.root, heightValue);
+// if (getHeight(node) > 0) {
+//   console.log('Height of node', heightValue, 'is: ', getHeight(node));
+// } else {
+//   console.log('Node', heightValue, 'not found!');
+// }
+
+
+
+// DEPTH test
+
+const node = find(bst.root, depthValue);
+if (node) {
+  console.log('Depth of node', depthValue, 'is: ', getDepth(bst.root, node));
 } else {
-  console.log('Node', heightValue, 'not found!');
+  console.log('Node', depthValue, 'not found!');
 }
