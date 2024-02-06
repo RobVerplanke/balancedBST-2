@@ -1,10 +1,9 @@
 /* eslint-disable no-param-reassign */
-
 import createNode from '../tree/node.js';
+import Tree from '../tree/bst.js';
 import {
   isLeaf, hasOneChild, getParent, getInorderSuc, hasTwoChildren, getMax,
 } from './utils.js';
-
 
 // FIND
 export function find(root, value) {
@@ -21,7 +20,6 @@ export function find(root, value) {
   return null;
 }
 
-
 // INSERT
 export function insert(root, value) {
 
@@ -37,7 +35,6 @@ export function insert(root, value) {
 
   return root;
 }
-
 
 // REMOVE
 export function remove(root, value) {
@@ -111,7 +108,6 @@ export function remove(root, value) {
   return node;
 }
 
-
 // LEVEL ORDER with ITERATION
 export function levelOrderIteration(root, callback) {
   const result = [];
@@ -140,7 +136,6 @@ export function levelOrderIteration(root, callback) {
 
   return result;
 }
-
 
 // LEVEL ORDER with RECURSION
 function levelOrderHelper(root, result, queue, callback) {
@@ -179,7 +174,6 @@ export function levelOrderRecursion(root, callback) {
   return levelOrderHelper(root, result, queue, callback);
 }
 
-
 // PRE ORDER TRAVERSAL
 function preOrderHelper(root, result, callback) {
 
@@ -206,7 +200,6 @@ export function preOrder(root, callback) {
 
   return preOrderHelper(root, result, callback);
 }
-
 
 // IN ORDER TRAVERSAL
 function inOrderHelper(root, result, callback) {
@@ -235,7 +228,6 @@ export function inOrder(root, callback) {
   return inOrderHelper(root, result, callback);
 }
 
-
 // POST ORDER TRAVERSAL
 function postOrderHelper(root, result, callback) {
 
@@ -263,11 +255,10 @@ export function postOrder(root, callback) {
   return postOrderHelper(root, result, callback);
 }
 
-
 // HEIGHT
 export function getHeight(root) {
 
-  // End of (sub)tree is reached, subtract from total
+  // Base case: end of (sub)tree is reached, subtract from total
   if (root === null) return -1;
 
   // Recursively traverse through tree
@@ -278,10 +269,10 @@ export function getHeight(root) {
   return getMax(leftHalf, rightHalf) + 1;
 }
 
-
 // DEPTH
 export function getDepth(root, node) {
 
+  // Base cases: end of tree is reached or node is found in children
   if (root === null) return 0;
   if (root.left === node || root.right === node) return 1;
 
@@ -289,32 +280,41 @@ export function getDepth(root, node) {
   let leftHalf = getDepth(root.left, node);
   let rightHalf = getDepth(root.right, node);
 
+  // Node is found, add level to path
   if (leftHalf) leftHalf++;
   if (rightHalf) rightHalf++;
 
   return getMax(leftHalf, rightHalf);
 }
 
-// export function getDepth(root, node) {
+// IS BALANCED
+export function isBalanced(root) {
 
-//   // Base case: reached end of (sub)tree or node is found
-//   if (root === null) return 0;
-//   if (root === node) return 0;
+  // Base case: end of (sub)tree is reached
+  if (root === null) return 0;
 
-//   // Recursively traverse through tree
-//   let leftHalf = getDepth(root.left);
-//   let rightHalf = getDepth(root.right);
+  // Recursively traverse through tree
+  const leftHalf = isBalanced(root.left);
 
-//   // Add depth level
-//   if (leftHalf > 0) leftHalf++;
-//   if (rightHalf > 0) rightHalf++;
+  // Subtree is inbalanced
+  if (leftHalf === -1) return -1;
 
-//   return getMax(leftHalf, rightHalf) + 1;
-// }
+  const rightHalf = isBalanced(root.right);
+  if (rightHalf === -1) return -1;
 
-// isBalanced() {
+  // Node has inbalanced subtrees
+  if (Math.abs(leftHalf - rightHalf) > 1) return -1;
 
-// }
+  // Node has balanced subtrees
+  return getMax(leftHalf, rightHalf) + 1;
+}
 
+// REBALANCE
+export function rebalance(root) {
 
-// rebalance() {
+  // Create sorted array from unbalanced tree
+  const sortedArray = [...inOrder(root)];
+
+  // Create new bst
+  return new Tree(sortedArray);
+}

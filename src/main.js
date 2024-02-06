@@ -37,7 +37,7 @@
 /* eslint-disable no-unused-vars */
 import {
   find, levelOrderIteration, levelOrderRecursion, inOrder, preOrder, postOrder, insert, remove,
-  getHeight, getDepth,
+  getHeight, getDepth, isBalanced, rebalance,
 } from './modules/functions/functions.js';
 import Tree from './modules/tree/bst.js';
 import getNumbers from './modules/data/generateNumbers.js';
@@ -198,9 +198,41 @@ console.log('\n--------------------------------\n');
 
 // DEPTH test
 
-const node = find(bst.root, depthValue);
-if (node) {
-  console.log('Depth of node', depthValue, 'is: ', getDepth(bst.root, node));
+// const node = find(bst.root, depthValue);
+// if (node) {
+//   console.log('Depth of node', depthValue, 'is: ', getDepth(bst.root, node));
+// } else {
+//   console.log('Node', depthValue, 'not found!');
+// }
+
+
+
+// BALANCED & REBALANCE test
+
+if (isBalanced(bst.root) !== -1) {
+  console.log('Tree is balanced\n');
 } else {
-  console.log('Node', depthValue, 'not found!');
+  console.log('Tree is unbalanced\n');
 }
+
+// Inbalance tree
+console.log('Making tree inbalanced...\n');
+insert(bst.root, 123);
+insert(bst.root, 143);
+insert(bst.root, 153);
+insert(bst.root, 163);
+
+if (isBalanced(bst.root) !== -1) {
+  console.log('Tree is still balanced\n');
+} else {
+  console.log('Tree is now unbalanced\n');
+}
+
+prettyPrint(bst.root);
+console.log('\n--------------------------------\n');
+
+console.log('Rebalancing...\n');
+console.log('New balanced bst...\n');
+const balancedBST = rebalance(bst.root);
+prettyPrint(balancedBST.root);
+console.log('\n--------------------------------\n');
