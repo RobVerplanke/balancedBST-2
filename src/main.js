@@ -1,4 +1,4 @@
-/* Asignments
+/* Asignment
 
   - Write a find function that accepts a value and returns the node with the given value.
 
